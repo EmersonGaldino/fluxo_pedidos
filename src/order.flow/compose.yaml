@@ -1,0 +1,6 @@
+﻿services:
+  order.flow.api:
+    image: order.flow.api
+    build:
+      context: .
+      dockerfile: order.flow.api/Dockerfile

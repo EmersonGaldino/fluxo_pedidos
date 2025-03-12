@@ -1,0 +1,6 @@
+@order.flow.api_HostAddress = http://localhost:5218
+
+GET {{order.flow.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
