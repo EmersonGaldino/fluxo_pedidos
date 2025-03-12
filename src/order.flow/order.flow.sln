@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order.flow.application", "o
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order.flow.bootstraper", "order.flow.bootstraper\order.flow.bootstraper.csproj", "{DEBA5430-8FDC-4D94-A7A3-0D268831E68A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order.flow.domain", "order.flow.domain\order.flow.domain.csproj", "{ECF09638-3FDA-463B-86B9-991491D81BFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,5 +31,9 @@ Global
 		{DEBA5430-8FDC-4D94-A7A3-0D268831E68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEBA5430-8FDC-4D94-A7A3-0D268831E68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEBA5430-8FDC-4D94-A7A3-0D268831E68A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF09638-3FDA-463B-86B9-991491D81BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF09638-3FDA-463B-86B9-991491D81BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF09638-3FDA-463B-86B9-991491D81BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF09638-3FDA-463B-86B9-991491D81BFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
