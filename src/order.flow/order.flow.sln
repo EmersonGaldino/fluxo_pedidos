@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order.flow.crosscutting", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order.flow.persistence", "order.flow.persistence\order.flow.persistence.csproj", "{1998D89D-DCD9-480A-B77D-A74CCA70F88C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order.flow.utils", "order.flow.utils\order.flow.utils.csproj", "{06F29EC4-F6AB-4118-AC47-54C7A2A632B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,5 +49,9 @@ Global
 		{1998D89D-DCD9-480A-B77D-A74CCA70F88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1998D89D-DCD9-480A-B77D-A74CCA70F88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1998D89D-DCD9-480A-B77D-A74CCA70F88C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06F29EC4-F6AB-4118-AC47-54C7A2A632B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06F29EC4-F6AB-4118-AC47-54C7A2A632B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06F29EC4-F6AB-4118-AC47-54C7A2A632B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06F29EC4-F6AB-4118-AC47-54C7A2A632B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
