@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.Abstractions" Version="2.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.14" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
@@ -34,6 +35,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\order.flow.crosscutting\order.flow.crosscutting.csproj" />
+      <ProjectReference Include="..\order.flow.utils\order.flow.utils.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="configurations\autoMapper\" />
     </ItemGroup>
 
 </Project>

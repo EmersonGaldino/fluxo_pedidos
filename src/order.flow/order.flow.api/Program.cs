@@ -1,9 +1,35 @@
-var builder = WebApplication.CreateBuilder(args);
+using order.flow.api.configuration.autoMapper;
+using order.flow.bootstraper.configurations.auth;
+using order.flow.bootstraper.configurations.cors;
+using order.flow.bootstraper.configurations.dependencyInjection;
+using order.flow.bootstraper.configurations.logger;
+using order.flow.bootstraper.configurations.security;
+using order.flow.bootstraper.configurations.swagger;
+using order.flow.utils.autoMapper;
+using Serilog;
 
+var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+var provider = services.BuildServiceProvider();
+var configuration = provider.GetRequiredService<IConfiguration>();
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Host.UseSerilog();
+builder.Services.AddControllers();
+
+
+//My injections
+services.AddAutoMapperConfiguration();
+services.AddAutoMapperModelViewConfiguration();
+
+AuthConfiguration.Register(services, configuration);
+LoggerBuilder.ConfigureLogging();
+
+services.AddProtectedControllers();
+services.AddCors();
+services.AddSwaggerService();
+services.AddServices(configuration); 
 
 var app = builder.Build();
 
@@ -15,30 +41,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+app.UseCorsConfig();
+app.UseAuthorization();
+app.UseAuthentication();
+app.UseRouting();
+app.UseSwaggerConfig();
+app.UseEndpointsConfig();
+app.UseHttpsRedirection();
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
