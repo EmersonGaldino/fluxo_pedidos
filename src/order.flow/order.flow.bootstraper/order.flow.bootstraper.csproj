@@ -35,6 +35,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\order.flow.crosscutting\order.flow.crosscutting.csproj" />
+      <ProjectReference Include="..\order.flow.domain\order.flow.domain.csproj" />
+      <ProjectReference Include="..\order.flow.persistence\order.flow.persistence.csproj" />
       <ProjectReference Include="..\order.flow.utils\order.flow.utils.csproj" />
     </ItemGroup>
 

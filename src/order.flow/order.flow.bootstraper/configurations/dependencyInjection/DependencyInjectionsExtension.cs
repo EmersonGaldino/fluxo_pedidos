@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using order.flow.bootstraper.filters;
 using order.flow.crosscutting.infraestructure.Base;
+using order.flow.persistence.configuration.uow;
+using order.flow.utils.shared;
 
 namespace order.flow.bootstraper.configurations.dependencyInjection;
 
@@ -29,9 +31,9 @@ public static class DependencyInjectionsExtension
             .SetCompatibilityVersion(CompatibilityVersion.Latest);
         #endregion
 
-        // services.AddScoped<IConnectionPostgres, UnitOfWorkPostgres>(x
-        //     => new UnitOfWorkPostgres(configuration.GetSection("Configurations").GetSection("Connection-string").Value));
-        //
+        services.AddScoped<IConnectionPostgres, UnitOfWorkPostgres>(x
+            => new UnitOfWorkPostgres(infraConfig.DataBase.ConnectionString));
+        
         #region .::AppService
         // services.AddScoped<IRouteAppService, RouteAppService>();
         
