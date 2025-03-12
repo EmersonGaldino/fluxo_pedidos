@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var provider = services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
-// Add services to the container.
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Host.UseSerilog();
@@ -33,7 +33,6 @@ services.AddServices(configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

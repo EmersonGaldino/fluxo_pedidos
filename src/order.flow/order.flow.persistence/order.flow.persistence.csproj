@@ -6,4 +6,17 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="configuration\uow\" />
+      <Folder Include="repositories\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.1.66" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\order.flow.domain\order.flow.domain.csproj" />
+    </ItemGroup>
+
 </Project>
