@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="configuration\uow\interface\" />
       <Folder Include="repositories\" />
     </ItemGroup>
 
