@@ -23,7 +23,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore src/order.flow.sln
 
       - name: Run tests
         run: dotnet test src/order.flow.sln
@@ -43,7 +43,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore src/order.flow.sln
 
       - name: Build application
         run: dotnet build src/order.flow.sln --no-restore --configuration Release
