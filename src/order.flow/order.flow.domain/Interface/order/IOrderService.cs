@@ -7,5 +7,5 @@ namespace order.flow.domain.Interface.order;
 public interface IOrderService: IServiceBase<OrderEntity, IOrderRepository>
 {
     Task<OrderEntity> Post(OrderEntity model);
-    Task UpdateSatatusAsync(Guid orderOrderId);
+    Task UpdateStatusAsync(Guid orderOrderId);
 }

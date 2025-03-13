@@ -1,7 +1,8 @@
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using order.flow.application.Interface.address;
 using order.flow.application.Interface.order;
@@ -30,8 +31,11 @@ using order.flow.persistence.repositories.address;
 using order.flow.persistence.repositories.order;
 using order.flow.persistence.repositories.phone;
 using order.flow.persistence.repositories.resale;
+using order.flow.utils.cache.memory;
+using order.flow.utils.service.htpp;
 using order.flow.utils.shared;
 using order.flow.worker.service;
+using Polly;
 
 namespace order.flow.bootstraper.configurations.dependencyInjection;
 
@@ -83,11 +87,28 @@ public static class DependencyInjectionsExtension
         services.AddScoped<IOrderItemRepository, OrderItemRepository>();
         #endregion
 
-        services.AddHostedService<WorkerSendItensService>();
+        #region .::MemoryCache
+        services.AddSingleton<LocalCacheService>();
+        #endregion
+        
+        #region .:: Polly HttpClient injection
+        var timeout = TimeSpan.FromSeconds(50);
+        var retry = TimeSpan.FromMilliseconds(600000);
+        services.AddHttpClient<IWebRequest, WebRequest>()
+            .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(2, _ => retry))
+            .AddPolicyHandler(request => Policy.TimeoutAsync<HttpResponseMessage>(timeout))
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { ServerCertificateCustomValidationCallback = AcceptAllCertifications });
+        #endregion
       
         return services;
 
     }
+    private static bool AcceptAllCertifications(HttpRequestMessage httpRequestMessage, X509Certificate2? x509Certificate2, X509Chain? chain,
+        SslPolicyErrors sslPolicyErrors)
+    {
+
+        return true;
+    } 
     private static void RegistrarInterfaces(IServiceCollection services, Type typeBase, string containsInNamespace,
         string sulfix)
     {

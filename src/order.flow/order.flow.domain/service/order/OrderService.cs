@@ -20,7 +20,7 @@ public class OrderService(
         return order;
     }
 
-    public async Task UpdateSatatusAsync(Guid orderId) => await repository.UpdateSatatusAsync(orderId);
+    public async Task UpdateStatusAsync(Guid orderId) => await repository.UpdateSatatusAsync(orderId);
     
 
     private async Task<List<OrderItemEntity>> SaveItems(List<OrderItemEntity> models, Guid orderId)

@@ -1,10 +1,8 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using order.flow.api.controllers.Base;
 using order.flow.api.models.Base;
 using order.flow.api.models.order;
-using order.flow.application.Interface.order;
 using order.flow.domain.entity.order;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -13,22 +11,28 @@ namespace order.flow.api.controllers.order;
 [Route("api/[controller]")]
 [ApiController]
 [AllowAnonymous]
-public class OrderController : ApiBaseController
+public class OrderServiceController: ApiBaseController
 {
-    private IOrderAppService orderAppService => GetService<IOrderAppService>();
-    private IMapper mapper => GetService<IMapper>();
-    
-    
     [HttpPost]
-    [SwaggerOperation(Summary = "Cria um pedido",
-        Description = "Aqui criamos o pedido em nossa base.")]
+    [SwaggerOperation(Summary = "recebe pedidos",
+        Description = "Aqui receberemos todos os pedidos e devolveremos um pedidoId.")]
     [SwaggerResponse(200, "Sucesso.", typeof(SuccessResponse<>))]
     [SwaggerResponse(400, "Dados salvo com sucesso", typeof(BadResponse))]
     [SwaggerResponse(500, "Erro interno no servidor.", typeof(BadResponse))]
-    public async Task<IActionResult> Post([FromBody] OrderViewModel model)=> await EventResult(async () =>
+    public async Task<IActionResult> Post([FromBody] List<OrderCountEntity> model)=> await EventResult(async () =>
         new BaseModelView<object>
         {
-            Message = "Order created success", 
-            Data = await orderAppService.Post(mapper.Map<OrderEntity>(model))
+            Message = "Pedido recebido com sucesso.", 
+            Data =new
+            {
+                Order = RandonNumberOrder()
+            }
         });
+
+    private int RandonNumberOrder()
+    {
+        Random random = new Random();
+        int randomNumber = random.Next(100, 1000); 
+        return randomNumber;
+    }
 }

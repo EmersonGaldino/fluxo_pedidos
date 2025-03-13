@@ -7,6 +7,7 @@ using order.flow.bootstraper.configurations.security;
 using order.flow.bootstraper.configurations.swagger;
 using order.flow.utils.autoMapper;
 using order.flow.worker.service;
+using Quartz;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +33,18 @@ services.AddProtectedControllers();
 services.AddCors();
 services.AddSwaggerService();
 services.AddServices(configuration); 
+
+builder.Services.AddQuartz(q =>
+{
+    var jobKey = new JobKey("OrderProcessJob");
+
+    q.AddJob<OrderProcessJob>(opts => opts.WithIdentity(jobKey));
+    q.AddTrigger(opts => opts
+        .ForJob(jobKey)
+        .WithIdentity("OrderProcessJob-trigger")
+        .WithCronSchedule("0 */1 * * * ?")); 
+});
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = false);
 
 var app = builder.Build();
 
