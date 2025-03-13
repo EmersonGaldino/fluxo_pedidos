@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\order.flow.domain\order.flow.domain.csproj" />
+    </ItemGroup>
+
 </Project>

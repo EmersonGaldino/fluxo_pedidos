@@ -8,7 +8,10 @@ namespace order.flow.domain.entity.phone;
 public class PhoneEntity : BaseEntity
 {
     [Key]
+    [Column("id")]
     public Guid Id { get; set; }
+    [Column("phone")]
     public string Phone { get; set; }
+    [Column("typephone")]
     public string TypePhone { get; set; }
 }

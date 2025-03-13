@@ -4,7 +4,7 @@ using order.flow.domain.entity.Base;
 namespace order.flow.domain.entity.order;
 
 [Table("tb_statusOrder")]
-public class StatusOrder : BaseEntity
+public class StatusOrderEntity : BaseEntity
 {
     public Guid Id { get; set; }
     public char Status { get; set; }

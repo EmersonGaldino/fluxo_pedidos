@@ -6,18 +6,20 @@ using order.flow.bootstraper.configurations.logger;
 using order.flow.bootstraper.configurations.security;
 using order.flow.bootstraper.configurations.swagger;
 using order.flow.utils.autoMapper;
+using order.flow.worker.service;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var services = builder.Services;
 var provider = services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Host.UseSerilog();
 builder.Services.AddControllers();
-
 
 //My injections
 services.AddAutoMapperConfiguration();

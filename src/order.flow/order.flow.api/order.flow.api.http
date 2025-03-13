@@ -1,6 +1,63 @@
-@order.flow.api_HostAddress = http://localhost:5218
 
-GET {{order.flow.api_HostAddress}}/weatherforecast/
-Accept: application/json
+POST http://localhost:5218/api/Order
+accept: text/plain
+Content-Type: application/json
+
+{
+  "resaleId": "550e8400-e29b-41d4-a716-446655440000",
+  "addressId": "6fd63c01-a862-4151-b9b4-cad7fb33a15c",
+  
+  "items": [
+    {
+      "description": "Schin",
+      "quantity": 24
+    },
+   {
+      "description": "Skol",
+      "quantity": 36
+    }
+  ]
+}
 
 ###
+
+
+POST http://localhost:5218/api/Resale
+accept: text/plain
+Content-Type: application/json
+
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "document": "98765432100",
+  "socialReason": "Galdino Associados SA",
+  "fantasyName": "Galdino",
+  "email": "a123123123@a.com",
+  "contactName":"Galdino",
+  "phones": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "value": "(11) 987654-1222",
+      "typePhone": "Celular"
+    }
+  ],
+  "addressDelevery": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "resaleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "value": "henriqueta",
+      "city": "barueri",
+      "state": "SP",
+      "zipCode": "06401160",
+      "country": "Brasil",
+      "typeAddress": 1
+    }
+  ]
+}
+
+###
+
+GET http://localhost:5218/api/Resale
+accept: text/plain
+
+###
+

@@ -24,6 +24,7 @@
     <ItemGroup>
       <ProjectReference Include="..\order.flow.bootstraper\order.flow.bootstraper.csproj" />
       <ProjectReference Include="..\order.flow.crosscutting\order.flow.crosscutting.csproj" />
+      <ProjectReference Include="..\order.flow.worker\order.flow.worker.csproj" />
     </ItemGroup>
 
 </Project>
