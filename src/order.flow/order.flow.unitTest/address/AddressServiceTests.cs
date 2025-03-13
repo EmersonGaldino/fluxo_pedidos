@@ -2,17 +2,15 @@ using Moq;
 using order.flow.domain.entity.address;
 using order.flow.domain.repository.Interface.address;
 using order.flow.domain.service.address;
-using Xunit;
-using Assert = NUnit.Framework.Assert;
 
 namespace order.flow.unitTest.address;
 
-public class AddressServiceTest
+public class AddressServiceTests
 {
     private readonly Mock<IAddressRepository> _repositoryMock;
     private readonly AddressService _service;
 
-    public AddressServiceTest()
+    public AddressServiceTests()
     {
         _repositoryMock = new Mock<IAddressRepository>();
         _service = new AddressService(_repositoryMock.Object);

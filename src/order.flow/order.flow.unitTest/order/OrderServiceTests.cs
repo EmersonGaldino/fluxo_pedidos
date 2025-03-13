@@ -8,13 +8,13 @@ using Assert = Xunit.Assert;
 
 namespace order.flow.unitTest.order;
 
-public class OrderServiceTest
+public class OrderServiceTests
 {
     private readonly Mock<IOrderRepository> _repositoryMock;
     private readonly Mock<IOrderItemService> _orderItemServiceMock;
     private readonly OrderService _service;
 
-    public OrderServiceTest()
+    public OrderServiceTests()
     {
         _repositoryMock = new Mock<IOrderRepository>();
         _orderItemServiceMock = new Mock<IOrderItemService>();

@@ -11,14 +11,14 @@ using Assert = Xunit.Assert;
 
 namespace order.flow.unitTest.resale;
 
-public class ResaleServiceTest
+public class ResaleServiceTests
 {
     private readonly Mock<IResaleRepository> _repositoryMock;
     private readonly Mock<IPhoneService> _phoneServiceMock;
     private readonly Mock<IAddressService> _addressServiceMock;
     private readonly ResaleService _service;
 
-    public ResaleServiceTest()
+    public ResaleServiceTests()
     {
         _repositoryMock = new Mock<IResaleRepository>();
         _phoneServiceMock = new Mock<IPhoneService>();

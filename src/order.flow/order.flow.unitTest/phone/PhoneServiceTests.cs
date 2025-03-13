@@ -7,12 +7,12 @@ using Assert = Xunit.Assert;
 
 namespace order.flow.unitTest.phone;
 
-public class PhoneServiceTest
+public class PhoneServiceTests
 {
     private readonly Mock<IPhoneRepository> _repositoryMock;
     private readonly PhoneService _service;
 
-    public PhoneServiceTest()
+    public PhoneServiceTests()
     {
         _repositoryMock = new Mock<IPhoneRepository>();
         _service = new PhoneService(_repositoryMock.Object);
