@@ -26,7 +26,7 @@ jobs:
         run: dotnet restore
 
       - name: Run tests
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test src/order.flow.sln
 
   build:
     name: Build Application
@@ -46,4 +46,4 @@ jobs:
         run: dotnet restore
 
       - name: Build application
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build src/order.flow.sln --no-restore --configuration Release
